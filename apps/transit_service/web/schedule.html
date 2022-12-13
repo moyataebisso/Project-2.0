@@ -69,6 +69,7 @@
     </div>
     <div><input type="button" value="Schedule Trip" onclick="schedule()"></div>
     <div><input type="button" value="Add Helicopter" onclick="addHelicopter()" style="margin-top: 10px;"></div>
+    <div><input type="button" value="Add Basketball" onclick="addBasketball()" style="margin-top: 10px;"></div>
     <div id="nameError"></div>
 
     <script>
@@ -78,6 +79,7 @@
         var trip = [];
 
         var helicopterID = 0;
+        var basketballID = 0;
 
         // This method is called when the document is loaded
         $(document).ready(function () {
@@ -199,7 +201,7 @@
                 "position": [700, 40, 400],
                 "scale": [0.02, 0.02, 0.02],
                 "direction": [1, 0, 0],
-                "speed": 40.0,
+                "speed": 0.0,
                 "offset": [0, 0.6, 0]
             });
             basketballID += 1

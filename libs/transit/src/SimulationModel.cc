@@ -33,7 +33,6 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
     while(i<5){
       IEntity* myNewEntity = compFactory->CreateEntity(entity);
       Vector3 currentPos = myNewEntity->GetPosition();
-      currentPos[0] = currentPos[0] * 2.0;
       myNewEntity->SetPosition(currentPos);
       myNewEntity->SetGraph(graph);
       std::cout << "Updated: " << position << std::endl;

@@ -1,5 +1,6 @@
 #define _USE_MATH_DEFINES
 #include "Basketball.h"
+
 #include <stdio.h> /* printf, scanf, puts, NULL */
 #include <stdlib.h>
 #include <time.h>
@@ -11,13 +12,15 @@
 #include "BeelineStrategy.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
-
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
 
 Basketball::Basketball(JsonObject& obj) : details(obj) {
-  JsonArray pos(obj["position"]);
-  position = {pos[0], pos[1], pos[2]};
+  int var1 = rand() % 2900 - 1400;
+  int var2 = rand() % 700 + 250;
+  double var3 = rand() % 1600 - 800;
+
+  position = {var1, var2, var3};
 
   JsonArray dir(obj["direction"]);
   direction = {dir[0], dir[1], dir[2]};
