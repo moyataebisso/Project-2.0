@@ -178,6 +178,33 @@
             });
             helicopterID += 1
         }
+        function addHoop() {
+            api.sendCommand("CreateEntity", {
+                "type": "hoop",
+                "name": "Hoop-" + hoopID,
+                "mesh": "assets/model/hoop.glb",
+                "position": [700, 290, 400],
+                "scale": [0.02, 0.02, 0.02],
+                "direction": [1, 0, 0],
+                "speed": 40.0,
+                "offset": [0, 0.6, 0]
+            });
+            hoopID += 1
+        }
+        function addBasketball() {
+            api.sendCommand("CreateEntity", {
+                "type": "basketball",
+                "name": "Basketball-" + basketballID,
+                "mesh": "assets/model/basketball.glb",
+                "position": [700, 40, 400],
+                "scale": [0.02, 0.02, 0.02],
+                "direction": [1, 0, 0],
+                "speed": 40.0,
+                "offset": [0, 0.6, 0]
+            });
+            basketballID += 1
+        }
+
     </script>
 </body>
 

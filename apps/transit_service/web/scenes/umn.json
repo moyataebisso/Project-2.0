@@ -115,7 +115,7 @@
             "mesh": "assets/model/dragon.glb",
             "position": [
                 300,
-                640,
+                1240,
                 -228.623
             ],
             "scale": [
@@ -150,7 +150,7 @@
             "mesh": "assets/model/basketball.glb",
             "position": [
                 250,
-                640,
+                40,
                 -228.623
             ],
             "scale": [
