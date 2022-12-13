@@ -7,6 +7,9 @@
 #include "RobotFactory.h"
 #include "BasketballFactory.h"
 #include "HoopFactory.h"
+#include "math/vector3.h"
+#include <vector>
+
 
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
@@ -25,13 +28,32 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
   std::string name = entity["name"];
   JsonArray position = entity["position"];
   std::cout << name << ": " << position << std::endl;
-
-  IEntity* myNewEntity = compFactory->CreateEntity(entity);
-  myNewEntity->SetGraph(graph);
+  if(type.compare("hoop") == 0){
+    int i = 0;
+    while(i<5){
+      IEntity* myNewEntity = compFactory->CreateEntity(entity);
+      Vector3 currentPos = myNewEntity->GetPosition();
+      currentPos[0] = currentPos[0] * 2.0;
+      myNewEntity->SetPosition(currentPos);
+      myNewEntity->SetGraph(graph);
+      std::cout << "Updated: " << position << std::endl;
+      //myNewEntity->SetPosition(coords);
 
   // Call AddEntity to add it to the view
-  controller.AddEntity(*myNewEntity);
-  entities.push_back(myNewEntity);
+      controller.AddEntity(*myNewEntity);
+      entities.push_back(myNewEntity);
+      i+=1;
+    }
+  }
+  else{
+    IEntity* myNewEntity = compFactory->CreateEntity(entity);
+    myNewEntity->SetGraph(graph);
+    // Call AddEntity to add it to the view
+    controller.AddEntity(*myNewEntity);
+    entities.push_back(myNewEntity);
+  }
+
+  
 }
 
 /// Schedules a trip for an object in the scene

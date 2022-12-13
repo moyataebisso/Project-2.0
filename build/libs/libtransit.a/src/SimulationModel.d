@@ -92,7 +92,7 @@
  include/Dragon.h include/DroneFactory.h include/HelicopterFactory.h \
  include/Helicopter.h include/RobotFactory.h include/Robot.h \
  include/BasketballFactory.h include/Basketball.h include/HoopFactory.h \
- include/Hoop.h
+ include/Hoop.h include/math/vector3.h
 
 include/SimulationModel.h:
 
@@ -311,3 +311,5 @@ include/Basketball.h:
 include/HoopFactory.h:
 
 include/Hoop.h:
+
+include/math/vector3.h:
