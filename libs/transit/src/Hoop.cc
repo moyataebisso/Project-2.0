@@ -16,8 +16,11 @@
 #include "SpinDecorator.h"
 
 Hoop::Hoop(JsonObject& obj) : details(obj) {
-  JsonArray pos(obj["position"]);
-  position = {pos[0], pos[1], pos[2]};
+  int var1 = rand() % 2900 - 1400;      // 200 to 499
+  double var3 = rand() % 2900 - 1400;
+  //int var = 1 5 / 6;
+  
+  position = {var1, 400, var3};
 
   JsonArray dir(obj["direction"]);
   direction = {dir[0], dir[1], dir[2]};
@@ -26,6 +29,7 @@ Hoop::Hoop(JsonObject& obj) : details(obj) {
 
   available = true;
 }
+
 
 Hoop::~Hoop() {
   // Delete dynamically allocated variables
