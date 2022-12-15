@@ -18,6 +18,7 @@
 Hoop::Hoop(JsonObject& obj) : details(obj) {
   int var1 = rand() % 2900 - 1400;  // 200 to 499
   double var3 = rand() % 2900 - 1400;
+
   position = {var1, 400, var3};
 
   JsonArray dir(obj["direction"]);
