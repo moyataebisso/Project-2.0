@@ -65,7 +65,6 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
         closest = hoop->GetPosition();
       }
     }
-    myNewEntity->SetStrategyName("dijkstra");
     myNewEntity->SetDestination(closest);
     scheduler.push_back(myNewEntity);
 

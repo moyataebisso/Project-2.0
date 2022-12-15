@@ -57,6 +57,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
         }
       }
     }
+    nearestEntity->SetStrategyName("dijkstra");
     // if we do find basketball available to transport, we will adjust its
     // destination to nearest hoop
     /* if (nearestEntity) {
@@ -89,6 +90,8 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
     destination = nearestEntity->GetPosition();
     std::cout << "WE MADE IT 4" << std::endl;
     std::cout << nearestEntity->GetStrategyName() << std::endl;
+    nearestEntity->SetDestination(Vector3(450, 450, 450));
+    nearestEntity->GetDestination().Print();
     toTargetPosStrategy = new BeelineStrategy(this->GetPosition(), destination);
     std::string targetStrategyName = nearestEntity->GetStrategyName();
     if (targetStrategyName.compare("astar") == 0) {
@@ -121,7 +124,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler,
   if (toTargetPosStrategy) {
     /* std::cout << this->position.x << "  " << this->position.y << "  " <<
      * this->position.z << std::endl; */
-    this->position.Print();
     toTargetPosStrategy->Move(this, dt);
     if (toTargetPosStrategy->IsCompleted()) {
       delete toTargetPosStrategy;

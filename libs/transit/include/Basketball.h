@@ -74,6 +74,13 @@ class Basketball : public IEntity {
    */
   void SetDestination(Vector3 des_) { destination = des_; }
   /**
+   * @brief Sets the strategy name of basketball
+   * @param[in] strategy type
+   */
+  void SetStrategyName(std::string strategyName_) {
+    strategyName = strategyName_;
+  }
+  /**
    * @brief Rotates the Basketball
    * @param[in] angle of double type
    */
