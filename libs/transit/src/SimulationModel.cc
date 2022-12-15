@@ -1,15 +1,15 @@
 #include "SimulationModel.h"
 
+#include <vector>
+
+#include "BasketballFactory.h"
 #include "CarFactory.h"
 #include "DragonFactory.h"
 #include "DroneFactory.h"
 #include "HelicopterFactory.h"
-#include "RobotFactory.h"
-#include "BasketballFactory.h"
 #include "HoopFactory.h"
+#include "RobotFactory.h"
 #include "math/vector3.h"
-#include <vector>
-
 
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
@@ -28,31 +28,54 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
   std::string name = entity["name"];
   JsonArray position = entity["position"];
   std::cout << name << ": " << position << std::endl;
-  if(type.compare("hoop") == 0){
+  if (type.compare("hoop") == 0) {
     int i = 0;
-    while(i<5){
+    while (i < 5) {
       IEntity* myNewEntity = compFactory->CreateEntity(entity);
       Vector3 currentPos = myNewEntity->GetPosition();
       myNewEntity->SetPosition(currentPos);
       myNewEntity->SetGraph(graph);
       std::cout << "Updated: " << position << std::endl;
-      //myNewEntity->SetPosition(coords);
+      // myNewEntity->SetPosition(coords);
 
-  // Call AddEntity to add it to the view
+      // Call AddEntity to add it to the view
       controller.AddEntity(*myNewEntity);
-      entities.push_back(myNewEntity);
-      i+=1;
+      hoops.push_back(myNewEntity);
+      i += 1;
     }
-  }
-  else{
+  } else if (type.compare("basketball") == 0) {
+    IEntity* myNewEntity = compFactory->CreateEntity(entity);
+    std::cout << "MADE IT HERE 0" << std::endl;
+    std::cout << myNewEntity->GetPosition().x << std::endl;
+    std::cout << myNewEntity->GetPosition().y << std::endl;
+    std::cout << myNewEntity->GetPosition().z << std::endl;
+    myNewEntity->SetGraph(graph);
+    // Call AddEntity to add it to the view
+    controller.AddEntity(*myNewEntity);
+    entities.push_back(myNewEntity);
+
+    float minDis2 = std::numeric_limits<float>::max();
+    Vector3 closest;
+    for (auto hoop : hoops) {
+      JsonObject detailsTemp = hoop->GetDetails();
+      float disToEntity =
+          (myNewEntity->GetPosition()).Distance(hoop->GetPosition());
+      if (disToEntity <= minDis2) {
+        minDis2 = disToEntity;
+        closest = hoop->GetPosition();
+      }
+    }
+    myNewEntity->SetStrategyName("dijkstra");
+    myNewEntity->SetDestination(closest);
+    scheduler.push_back(myNewEntity);
+
+  } else {
     IEntity* myNewEntity = compFactory->CreateEntity(entity);
     myNewEntity->SetGraph(graph);
     // Call AddEntity to add it to the view
     controller.AddEntity(*myNewEntity);
     entities.push_back(myNewEntity);
   }
-
-  
 }
 
 /// Schedules a trip for an object in the scene
@@ -81,8 +104,15 @@ void SimulationModel::ScheduleTrip(JsonObject& details) {
 /// Updates the simulation
 void SimulationModel::Update(double dt) {
   for (int i = 0; i < entities.size(); i++) {
-    entities[i]->Update(dt, scheduler);
-    controller.UpdateEntity(*entities[i]);
+    JsonObject detailsTemp = entities[i]->GetDetails();
+    std::string typeTemp = detailsTemp["type"];
+    if (typeTemp.compare("drone") == 0) {
+      entities[i]->Update(dt, scheduler, hoops);
+      controller.UpdateEntity(*entities[i]);
+    } else {
+      entities[i]->Update(dt, scheduler);
+      controller.UpdateEntity(*entities[i]);
+    }
   }
 }
 

@@ -93,7 +93,7 @@ class Basketball : public IEntity {
   float speed;
   bool available;
   bool pickedUp;
-  std::string strategyName = "astar";
+  std::string strategyName = "dijkstra";
   IEntity* nearestEntity = NULL;
   IStrategy* toTargetPosStrategy = NULL;
   IStrategy* toTargetDestStrategy = NULL;

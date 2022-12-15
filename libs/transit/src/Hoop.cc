@@ -1,5 +1,6 @@
 #define _USE_MATH_DEFINES
 #include "Hoop.h"
+
 #include <stdio.h> /* printf, scanf, puts, NULL */
 #include <stdlib.h>
 #include <time.h>
@@ -11,13 +12,13 @@
 #include "BeelineStrategy.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
-
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
 
 Hoop::Hoop(JsonObject& obj) : details(obj) {
-  JsonArray pos(obj["position"]);
-  position = {pos[0], pos[1], pos[2]};
+  int var1 = rand() % 2900 - 1400;  // 200 to 499
+  double var3 = rand() % 2900 - 1400;
+  position = {var1, 400, var3};
 
   JsonArray dir(obj["direction"]);
   direction = {dir[0], dir[1], dir[2]};
@@ -44,7 +45,7 @@ void Hoop::Update(double dt, std::vector<IEntity*> scheduler) {
     float y_rand = 250;                   // 240 to 1000
     float z_rand = rand() % 1600 - 800;   //-800 to 800
     // Vector3 random_dest = direction;
-
+    SetPosition(Vector3(x_rand, y_rand, z_rand));
     SetDestination(Vector3(x_rand, y_rand, z_rand));
     toTargetPosStrategy = new BeelineStrategy(GetPosition(), GetDestination());
   }

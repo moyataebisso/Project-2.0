@@ -1,11 +1,7 @@
 ../../build/libs/libtransit.a/src/SimulationModel.o: \
- src/SimulationModel.cc include/SimulationModel.h include/IController.h \
- include/IEntity.h ../../libs/routing/include/graph.h \
- ../../libs/routing/include/routing_strategy.h \
- ../../libs/routing/include/graph.h \
- ../../libs/routing/include/distance_function.h \
- ../../libs/routing/include/bounding_box.h include/math/vector3.h \
- include/util/json.h ../../dependencies/include/WebServer.h \
+ src/SimulationModel.cc include/SimulationModel.h \
+ include/CompositeFactory.h include/IEntityFactory.h include/util/json.h \
+ ../../dependencies/include/WebServer.h \
  ../../dependencies/include/libwebsockets.h \
  ../../dependencies/include/lws_config.h \
  ../../dependencies/include/libwebsockets/lws-logs.h \
@@ -86,31 +82,24 @@
  ../../dependencies/include/libwebsockets/lws-settings.h \
  ../../dependencies/include/libwebsockets/lws-netdev.h \
  ../../dependencies/include/picojson.h \
- ../../dependencies/include/picojson.h include/CompositeFactory.h \
- include/IEntityFactory.h include/Drone.h include/IStrategy.h \
- include/CarFactory.h include/Car.h include/DragonFactory.h \
- include/Dragon.h include/DroneFactory.h include/HelicopterFactory.h \
- include/Helicopter.h include/RobotFactory.h include/Robot.h \
- include/BasketballFactory.h include/Basketball.h include/HoopFactory.h \
- include/Hoop.h include/math/vector3.h
+ ../../dependencies/include/picojson.h include/IEntity.h \
+ ../../libs/routing/include/graph.h \
+ ../../libs/routing/include/routing_strategy.h \
+ ../../libs/routing/include/graph.h \
+ ../../libs/routing/include/distance_function.h \
+ ../../libs/routing/include/bounding_box.h include/math/vector3.h \
+ include/Drone.h include/IStrategy.h include/IController.h \
+ include/BasketballFactory.h include/Basketball.h include/CarFactory.h \
+ include/Car.h include/DragonFactory.h include/Dragon.h \
+ include/DroneFactory.h include/HelicopterFactory.h include/Helicopter.h \
+ include/HoopFactory.h include/Hoop.h include/RobotFactory.h \
+ include/Robot.h include/math/vector3.h
 
 include/SimulationModel.h:
 
-include/IController.h:
+include/CompositeFactory.h:
 
-include/IEntity.h:
-
-../../libs/routing/include/graph.h:
-
-../../libs/routing/include/routing_strategy.h:
-
-../../libs/routing/include/graph.h:
-
-../../libs/routing/include/distance_function.h:
-
-../../libs/routing/include/bounding_box.h:
-
-include/math/vector3.h:
+include/IEntityFactory.h:
 
 include/util/json.h:
 
@@ -278,13 +267,29 @@ include/util/json.h:
 
 ../../dependencies/include/picojson.h:
 
-include/CompositeFactory.h:
+include/IEntity.h:
 
-include/IEntityFactory.h:
+../../libs/routing/include/graph.h:
+
+../../libs/routing/include/routing_strategy.h:
+
+../../libs/routing/include/graph.h:
+
+../../libs/routing/include/distance_function.h:
+
+../../libs/routing/include/bounding_box.h:
+
+include/math/vector3.h:
 
 include/Drone.h:
 
 include/IStrategy.h:
+
+include/IController.h:
+
+include/BasketballFactory.h:
+
+include/Basketball.h:
 
 include/CarFactory.h:
 
@@ -300,16 +305,12 @@ include/HelicopterFactory.h:
 
 include/Helicopter.h:
 
-include/RobotFactory.h:
-
-include/Robot.h:
-
-include/BasketballFactory.h:
-
-include/Basketball.h:
-
 include/HoopFactory.h:
 
 include/Hoop.h:
+
+include/RobotFactory.h:
+
+include/Robot.h:
 
 include/math/vector3.h:
