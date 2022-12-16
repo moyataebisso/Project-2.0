@@ -86,8 +86,8 @@
  ../../dependencies/include/libwebsockets/lws-netdev.h \
  ../../dependencies/include/picojson.h \
  ../../dependencies/include/picojson.h include/IStrategy.h \
- include/AstarStrategy.h include/BeelineStrategy.h include/DfsStrategy.h \
- include/DijkstraStrategy.h include/JumpDecorator.h \
+ include/AstarStrategy.h include/Basketball.h include/BeelineStrategy.h \
+ include/DfsStrategy.h include/DijkstraStrategy.h include/JumpDecorator.h \
  include/CelebrationDecorator.h include/SimulationModel.h \
  include/CompositeFactory.h include/IEntityFactory.h include/Drone.h \
  include/IController.h include/SpinDecorator.h
@@ -277,6 +277,8 @@ include/util/json.h:
 include/IStrategy.h:
 
 include/AstarStrategy.h:
+
+include/Basketball.h:
 
 include/BeelineStrategy.h:
 

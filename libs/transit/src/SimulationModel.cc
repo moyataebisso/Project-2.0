@@ -19,8 +19,8 @@ SimulationModel::SimulationModel(IController& controller)
   AddFactory(new CarFactory());
   AddFactory(new HelicopterFactory());
   AddFactory(new DragonFactory());
-  AddFactory(new BasketballFactory());
   AddFactory(new HoopFactory());
+  AddFactory(new BasketballFactory());
 }
 
 void SimulationModel::CreateEntity(JsonObject& entity) {
@@ -31,9 +31,13 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
   if (type.compare("hoop") == 0) {
     int i = 0;
     while (i < 5) {
+      int var1 = rand() % 2900 - 1400;
+      int var2 = rand() % 700 + 250;
+      double var3 = rand() % 1600 - 800;
+      JsonArray random_position = {var1, var2, var3};
+      entity["position"] = random_position;
       IEntity* myNewEntity = compFactory->CreateEntity(entity);
-      Vector3 currentPos = myNewEntity->GetPosition();
-      myNewEntity->SetPosition(currentPos);
+      
       myNewEntity->SetGraph(graph);
       std::cout << "Updated: " << position << std::endl;
       // myNewEntity->SetPosition(coords);
@@ -45,27 +49,32 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
     }
   } else if (type.compare("basketball") == 0) {
     IEntity* myNewEntity = compFactory->CreateEntity(entity);
-    std::cout << "MADE IT HERE 0" << std::endl;
-    std::cout << myNewEntity->GetPosition().x << std::endl;
-    std::cout << myNewEntity->GetPosition().y << std::endl;
-    std::cout << myNewEntity->GetPosition().z << std::endl;
     myNewEntity->SetGraph(graph);
     // Call AddEntity to add it to the view
     controller.AddEntity(*myNewEntity);
-    entities.push_back(myNewEntity);
 
     float minDis2 = std::numeric_limits<float>::max();
     Vector3 closest;
     for (auto hoop : hoops) {
       JsonObject detailsTemp = hoop->GetDetails();
+      std::cout << "CHECKING HOOPS" << std::endl;
+      myNewEntity->GetPosition().Print();
+      hoop->GetPosition().Print();
+
       float disToEntity =
           (myNewEntity->GetPosition()).Distance(hoop->GetPosition());
+
       if (disToEntity <= minDis2) {
         minDis2 = disToEntity;
         closest = hoop->GetPosition();
       }
     }
+    std::cout << "CHECKING DESTINATION" << std::endl;
+
+    myNewEntity->GetDestination().Print();
     myNewEntity->SetDestination(closest);
+    myNewEntity->GetDestination().Print();
+    entities.push_back(myNewEntity);
     scheduler.push_back(myNewEntity);
 
   } else {

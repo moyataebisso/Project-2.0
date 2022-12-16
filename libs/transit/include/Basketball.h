@@ -81,6 +81,11 @@ class Basketball : public IEntity {
     strategyName = strategyName_;
   }
   /**
+   * @brief Sets the availability of basketball
+   * @param[in] bool choice of availability
+   */
+  void SetAvailability(bool choice);
+  /**
    * @brief Rotates the Basketball
    * @param[in] angle of double type
    */

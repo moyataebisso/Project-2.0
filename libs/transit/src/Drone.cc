@@ -5,6 +5,7 @@
 #include <limits>
 
 #include "AstarStrategy.h"
+#include "Basketball.h"
 #include "BeelineStrategy.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
@@ -30,6 +31,7 @@ Drone::~Drone() {
 // we check for robot first
 void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
                              std::vector<IEntity*> hoops) {
+  std::cout << "IT WORKS 2A" << std::endl;
   float minDis = std::numeric_limits<float>::max();
   for (auto entity : scheduler) {
     JsonObject detailsTemp = entity->GetDetails();
@@ -44,7 +46,7 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
   }
   // if there are no robots, we check for basketballs next
   if (!nearestEntity) {
-    std::cout << "WE MADE IT 2" << std::endl;
+    std::cout << "IT WORKS 2B" << std::endl;
     float minDis1 = std::numeric_limits<float>::max();
     for (auto entity : scheduler) {
       JsonObject detailsTemp = entity->GetDetails();
@@ -57,11 +59,10 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
         }
       }
     }
-    nearestEntity->SetStrategyName("dijkstra");
+
     // if we do find basketball available to transport, we will adjust its
     // destination to nearest hoop
     /* if (nearestEntity) {
-      std::cout << "WE MADE IT 2" << std::endl;
       float minDis2 = std::numeric_limits<float>::max();
       Vector3 closest;
       for (auto hoop : hoops) {
@@ -74,26 +75,26 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
           closest = hoop->GetPosition();
         }
       }
-      nearestEntity->SetDestination(closest);
-    } */
+      nearestEntity->SetDestination(closest);  */
+    if (nearestEntity) {
+    std::cout << "IT WORKS 3A" << std::endl;
+    nearestEntity->SetStrategyName("beeline");
+    std::cout << "IT WORKS 3B" << std::endl;
+    }
   }
 
   if (nearestEntity) {
-    std::cout << nearestEntity->GetPosition().x << std::endl;
-    std::cout << nearestEntity->GetPosition().y << std::endl;
-    std::cout << nearestEntity->GetPosition().z << std::endl;
+    std::cout << "IT WORKS 4" << std::endl;
     nearestEntity->SetAvailability(
         false);  // set availability to the nearest entity
+    std::cout << nearestEntity->GetAvailability() << std::endl;
     available = false;
     pickedUp = false;
 
     destination = nearestEntity->GetPosition();
-    std::cout << "WE MADE IT 4" << std::endl;
-    std::cout << nearestEntity->GetStrategyName() << std::endl;
-    nearestEntity->SetDestination(Vector3(450, 450, 450));
-    nearestEntity->GetDestination().Print();
     toTargetPosStrategy = new BeelineStrategy(this->GetPosition(), destination);
     std::string targetStrategyName = nearestEntity->GetStrategyName();
+    std::cout << "IT WORKS 5" << std::endl;
     if (targetStrategyName.compare("astar") == 0) {
       toTargetDestStrategy = new AstarStrategy(
           nearestEntity->GetPosition(), nearestEntity->GetDestination(), graph);
@@ -107,29 +108,32 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
           nearestEntity->GetPosition(), nearestEntity->GetDestination(), graph);
       toTargetDestStrategy = new SpinDecorator(toTargetDestStrategy);
       toTargetDestStrategy = new JumpDecorator(toTargetDestStrategy);
+    } else if (targetStrategyName.compare("beeline") == 0) {
+      toTargetDestStrategy = new BeelineStrategy(
+          nearestEntity->GetPosition(), nearestEntity->GetDestination());
+      toTargetDestStrategy = new SpinDecorator(toTargetDestStrategy);
+      toTargetDestStrategy = new JumpDecorator(toTargetDestStrategy);
     }
-    std::cout << destination.x << std::endl;
-    std::cout << destination.y << std::endl;
-    std::cout << destination.z << std::endl;
   }
 }
 
 void Drone::Update(double dt, std::vector<IEntity*> scheduler,
                    std::vector<IEntity*> hoops) {
+  /*std::cout << "IT WORKS 1" << std::endl;*/
   if (available) {
-    std::cout << "WE MADE IT 1" << std::endl;
+    std::cout << "IT WORKS 1A" << std::endl;
     GetNearestEntity(scheduler, hoops);
   }
 
   if (toTargetPosStrategy) {
-    /* std::cout << this->position.x << "  " << this->position.y << "  " <<
-     * this->position.z << std::endl; */
+    /*std::cout << "IT WORKS 1B" << std::endl;*/
     toTargetPosStrategy->Move(this, dt);
     if (toTargetPosStrategy->IsCompleted()) {
       delete toTargetPosStrategy;
       toTargetPosStrategy = NULL;
     }
   } else if (toTargetDestStrategy) {
+    /*std::cout << "IT WORKS 1C" << std::endl;*/
     toTargetDestStrategy->Move(this, dt);
 
     // Moving the robot
@@ -141,8 +145,6 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler,
       available = true;
       nearestEntity = NULL;
     }
-  } else {
-    std::cout << "WE MADE IT TO BASKETBALL" << std::endl;
   }
 }
 
