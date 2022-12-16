@@ -1,7 +1,5 @@
 #include "SimulationModel.h"
-
 #include <vector>
-
 #include "BasketballFactory.h"
 #include "CarFactory.h"
 #include "DragonFactory.h"
@@ -10,6 +8,8 @@
 #include "HoopFactory.h"
 #include "RobotFactory.h"
 #include "math/vector3.h"
+
+
 
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
@@ -37,7 +37,6 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
       JsonArray random_position = {var1, var2, var3};
       entity["position"] = random_position;
       IEntity* myNewEntity = compFactory->CreateEntity(entity);
-      
       myNewEntity->SetGraph(graph);
       std::cout << "Updated: " << position << std::endl;
       // myNewEntity->SetPosition(coords);

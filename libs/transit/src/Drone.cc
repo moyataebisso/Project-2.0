@@ -1,9 +1,7 @@
 #define _USE_MATH_DEFINES
 #include "Drone.h"
-
 #include <cmath>
 #include <limits>
-
 #include "AstarStrategy.h"
 #include "Basketball.h"
 #include "BeelineStrategy.h"

@@ -1,13 +1,10 @@
 #define _USE_MATH_DEFINES
 #include "Hoop.h"
-
 #include <stdio.h> /* printf, scanf, puts, NULL */
 #include <stdlib.h>
 #include <time.h>
-
 #include <cmath>
 #include <limits>
-
 #include "AstarStrategy.h"
 #include "BeelineStrategy.h"
 #include "DfsStrategy.h"

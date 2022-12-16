@@ -1,19 +1,18 @@
 #define _USE_MATH_DEFINES
 #include "HelicopterFactory.h"
-
 #include <stdio.h> /* printf, scanf, puts, NULL */
 #include <stdlib.h>
 #include <time.h>
-
 #include <cmath>
 #include <limits>
-
 #include "AstarStrategy.h"
 #include "BeelineStrategy.h"
 #include "DfsStrategy.h"
 #include "DijkstraStrategy.h"
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
+
+unsigned int seedh = time(0);
 
 Helicopter::Helicopter(JsonObject& obj) : details(obj) {
   JsonArray pos(obj["position"]);
@@ -40,9 +39,9 @@ void Helicopter::Update(double dt, std::vector<IEntity*> scheduler) {
       toTargetPosStrategy = NULL;
     }
   } else {
-    float x_rand = rand() % 2900 - 1400;  //-1400 to 1500
+    float x_rand = rand_r(&seedh) % 2900 - 1400;  // -1400 to 1500
     float y_rand = 250;                   // 240 to 1000
-    float z_rand = rand() % 1600 - 800;   //-800 to 800
+    float z_rand = rand_r(&seedh) % 1600 - 800;   // -800 to 800
     // Vector3 random_dest = direction;
 
     SetDestination(Vector3(x_rand, y_rand, z_rand));
