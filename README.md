@@ -16,8 +16,8 @@ What is the project about: This project allows the user to control the behavior 
 	cd /path/to/repo/project
 
 3) Build the project
-	make clean
-	make -j
+**make clean
+make -j**
 
 4) Run the project
 	./build/bin/transit_service 8081 apps/transit_service/web/
