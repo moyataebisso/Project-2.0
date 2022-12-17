@@ -1,5 +1,7 @@
 #include "SimulationModel.h"
+
 #include <vector>
+
 #include "BasketballFactory.h"
 #include "CarFactory.h"
 #include "DragonFactory.h"
@@ -8,8 +10,6 @@
 #include "HoopFactory.h"
 #include "RobotFactory.h"
 #include "math/vector3.h"
-
-
 
 SimulationModel::SimulationModel(IController& controller)
     : controller(controller) {
@@ -38,7 +38,6 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
       entity["position"] = random_position;
       IEntity* myNewEntity = compFactory->CreateEntity(entity);
       myNewEntity->SetGraph(graph);
-      std::cout << "Updated: " << position << std::endl;
       // myNewEntity->SetPosition(coords);
 
       // Call AddEntity to add it to the view
@@ -52,11 +51,12 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
     // Call AddEntity to add it to the view
     controller.AddEntity(*myNewEntity);
 
-    float minDis2 = std::numeric_limits<float>::max();
+    float minDis2 = std::numeric_limits<
+        float>::max();  // algorithm to calculate nearest entity based on
+                        // entity's distance with current known minimum distance
     Vector3 closest;
     for (auto hoop : hoops) {
       JsonObject detailsTemp = hoop->GetDetails();
-      std::cout << "CHECKING HOOPS" << std::endl;
       myNewEntity->GetPosition().Print();
       hoop->GetPosition().Print();
 
@@ -68,7 +68,6 @@ void SimulationModel::CreateEntity(JsonObject& entity) {
         closest = hoop->GetPosition();
       }
     }
-    std::cout << "CHECKING DESTINATION" << std::endl;
 
     myNewEntity->GetDestination().Print();
     myNewEntity->SetDestination(closest);
