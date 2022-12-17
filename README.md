@@ -33,6 +33,10 @@ What is the project about: This project allows the user to control the behavior 
 
 7) When the simulation starts, a basketball is spawned first before any robots so the drone moves toward the basketball first. Then the user must then schedule robots to be picked up and/or click the “Add Basketball” button to spawn basketballs. Then the simulation will work by itself.
 
+## UML Diagram:
+(/Updated HW4 UML Diagram.pdf)
+
+
 ## Docker Link: 
 
 ## Youtube Demo Link: https://www.youtube.com/watch?v=yMU_Me01C1s
