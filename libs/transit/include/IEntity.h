@@ -53,7 +53,7 @@ class IEntity {
   /**
    * @brief Gets the availability for the IEntity
    */
-  virtual bool GetAvailability() const {};
+  virtual bool GetAvailability() const {}
   /**
    * @brief Gets the strategy name for the IEntity
    */
@@ -118,4 +118,4 @@ class IEntity {
   const IGraph* graph;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_IENTITY_H_

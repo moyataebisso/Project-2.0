@@ -53,4 +53,4 @@ class SimulationModel {
   CompositeFactory* compFactory;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_SIMULATIONMODEL_H_

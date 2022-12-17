@@ -28,4 +28,4 @@ class JumpDecorator : public CelebrationDecorator {
   void Move(IEntity* entity, double dt);
 };  // close class
 
-#endif  // JUMP_DECORATOR_H_
+#endif  // LIBS_TRANSIT_INCLUDE_JUMPDECORATOR_H_

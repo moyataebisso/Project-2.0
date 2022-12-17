@@ -46,4 +46,4 @@ class IController {
                                const JsonObject& details) = 0;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_ICONTROLLER_H_

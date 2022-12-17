@@ -109,4 +109,4 @@ class Helicopter : public IEntity {
   IStrategy* toTargetDestStrategy = NULL;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_HELICOPTER_H_

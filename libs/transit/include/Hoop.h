@@ -108,4 +108,4 @@ class Hoop : public IEntity {
   IStrategy* toTargetDestStrategy = NULL;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_HOOP_H_

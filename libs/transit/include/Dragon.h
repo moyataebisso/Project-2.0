@@ -107,4 +107,4 @@ class Dragon : public IEntity {
   IStrategy* toTargetDestStrategy = NULL;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_DRAGON_H_

@@ -120,4 +120,4 @@ class Drone : public IEntity {
   IStrategy* toTargetDestStrategy = NULL;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_DRONE_H_

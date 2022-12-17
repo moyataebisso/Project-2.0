@@ -34,4 +34,4 @@ class CelebrationDecorator : public IStrategy {
   float time;
 };  // close class
 
-#endif  // CELEBRATION_DECORATOR_H_
+#endif  // LIBS_TRANSIT_INCLUDE_CELEBRATIONDECORATOR_H_

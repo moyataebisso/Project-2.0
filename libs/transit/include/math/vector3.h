@@ -58,7 +58,6 @@ class Vector3 {
    * @return The Vector3 Object comprised of the division of the two objects
    */
   Vector3 operator/(float m);
-  
   float& operator[](int index) {
     if (index == 0) {
       return x;
@@ -111,4 +110,4 @@ class Vector3 {
   void Print();
 };
 
-#endif  // Vector3_H_
+#endif  // LIBS_TRANSIT_INCLUDE_MATH_VECTOR3_H_

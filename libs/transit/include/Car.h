@@ -16,7 +16,7 @@
 class Car : public IEntity {
  public:
   /**
-   * @brief Represents a Car in a physical system. 
+   * @brief Represents a Car in a physical system.
    * @param[in] obj of JsonObject& type
    */
   Car(JsonObject& obj);
@@ -109,4 +109,4 @@ class Car : public IEntity {
   IStrategy* toTargetDestStrategy = NULL;
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_CAR_H_

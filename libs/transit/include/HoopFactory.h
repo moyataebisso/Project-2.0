@@ -18,4 +18,4 @@ class HoopFactory : public IEntityFactory {
   IEntity* CreateEntity(JsonObject& entity);
 };
 
-#endif
+#endif  // LIBS_TRANSIT_INCLUDE_HOOPFACTORY_H_
