@@ -5,24 +5,24 @@ What is the project about: This project allows the user to control the behavior 
 
 How to run: 
 
-SSH into a CSE Lab Machine using port forwarding for the UI (Note: If port 8081 is not available, choose a different port (e.g. 8082, 8083, etc...)
-ssh -L 8081:127.0.0.1:8081 x500@csel-xxxx.cselabs.umn.edu
+1) SSH into a CSE Lab Machine using port forwarding for the UI (Note: If port 8081 is not available, choose a different port (e.g. 8082, 8083, etc...)
+	ssh -L 8081:127.0.0.1:8081 x500@csel-xxxx.cselabs.umn.edu
 
-Go to the project directory
-cd /path/to/repo/project
+2) Go to the project directory
+	cd /path/to/repo/project
 
-Build the project
-make clean
-make -j
+3) Build the project
+	make clean
+	make -j
 
-Run the project
+4) Run the project
 	./build/bin/transit_service 8081 apps/transit_service/web/
 
-Navigate to http://127.0.0.1:8081 and you should see a visualization. (Must open links in order for robots to appear)
+5) Navigate to http://127.0.0.1:8081 and you should see a visualization. (Must open links in order for robots to appear)
 
-Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to schedule the trips.
+6) Navigate to http://127.0.0.1:8081/schedule.html and you should see a page to schedule the trips.
 
-When the simulation starts, a basketball is spawned first before any robots so the drone moves toward the basketball first. Then the user must then schedule robots to be picked up and/or click the “Add Basketball” button to spawn basketballs. Then the simulation will work by itself.
+7) When the simulation starts, a basketball is spawned first before any robots so the drone moves toward the basketball first. Then the user must then schedule robots to be picked up and/or click the “Add Basketball” button to spawn basketballs. Then the simulation will work by itself.
 
 Docker Link: 
 
@@ -35,3 +35,4 @@ New Feature: When a drone picks up a basketball, it drops it off at the nearest 
 
 Sprint Retrospective: Our team used 3 Sprints during the course of creating this final project. The first sprint included basic plans like getting our idea checked off by a teacher assistant and scheduling a weekly time to meet up and discuss our progress and plans. The second sprint was about starting the coding aspect of the project by creating the header files first, and then creating the .cc files next. Then our last sprint had information about how we split up the work for Doxygen and code styling, and also finalizing our code.
 
+Note: For the code styling of SimulationModel.cc and SimulationModel.h, when we fix the rand() function to be rand_r() like we did in Basketball.cc and Hoop.cc, the simulation doesn't run at all so that's why we left the rand_r() functions in those files.
