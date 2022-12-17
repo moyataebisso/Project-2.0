@@ -58,7 +58,7 @@ class Vector3 {
    * @return The Vector3 Object comprised of the division of the two objects
    */
   Vector3 operator/(float m);
-
+  
   float& operator[](int index) {
     if (index == 0) {
       return x;
@@ -73,7 +73,6 @@ class Vector3 {
     static float dummyData;
     return dummyData;
   }
-
   float operator[](int index) const {
     if (index == 0) {
       return x;
@@ -86,16 +85,26 @@ class Vector3 {
     }
     return 0.0;
   }
-
+  /**
+   * @brief Finds magnitude
+   * @return magnitude
+   */
   float Magnitude() { return std::sqrt(x * x + y * y + z * z); }
-
+  /**
+   * @brief Finds unit.
+   * @return unit
+   */
   Vector3 Unit() { return (*this) / Magnitude(); }
-
+  /**
+   * @brief Finds the distance from vector3 v.
+   * @param[in] v The Vector3 object you would like to distance from the current
+   * Vector3 object
+   * @return The distance from v
+   */
   float Distance(const Vector3& v) {
     return sqrt(pow(v.x - this->x, 2) + pow(v.y - this->y, 2) +
                 pow(v.z - this->z, 2));
   }
-
   /**
    * @brief Prints vector to nicely formatted string
    */

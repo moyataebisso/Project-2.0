@@ -27,37 +27,38 @@ class Dragon : public IEntity {
   ~Dragon();
   /**
    * @brief Gets the speed of the Dragon
-   * @return float
+   * @return float of Dragon's speed
    */
   float GetSpeed() const { return speed; }
   /**
    * @brief Gets the position of the Dragon
-   * @return Vector3
+   * @return Vector3 Position
    */
   Vector3 GetPosition() const { return position; }
   /**
    * @brief Gets the direction of the Dragon
-   * @return Vector3
+   * @return Vector3 Direction
    */
   Vector3 GetDirection() const { return direction; }
   /**
    * @brief Gets the destination of the Dragon
-   * @return Vector3
+   * @return Vector3 Destination
    */
   Vector3 GetDestination() const { return destination; }
   /**
    * @brief Gets the details of the Dragon
-   * @return JsonObject
+   * @return JsonObject containing Dragon's details
    */
   JsonObject GetDetails() const { return details; }
   /**
    * @brief Gets the availibility of the Dragon
-   * @return boolean
+   * @return boolean value of Dragon's availability
    */
   bool GetAvailability() const { return available; }
   /**
    * @brief Updates the position of the Dragon
-   * @param[in] dt of double type and scheduler of std::vector<IEntity*> type
+   * @param[in] dt of double type
+   * @param[in] scheduler of std::vector<IEntity*> type
    */
   void Update(double dt, std::vector<IEntity*> scheduler);
   /**
@@ -80,9 +81,14 @@ class Dragon : public IEntity {
    * @param[in] angle of double type
    */
   void Rotate(double angle);
-  // Removing the copy constructor and assignment operator
-  // so that helicopters cannot be coppied.
+  /**
+   * @brief Removes the copy constructor so that helicopters cannot be copied.
+   */
   Dragon(const Dragon& dragon) = delete;
+  /**
+   * @brief Removes the assignment operator so that helicopters cannot be
+   * copied.
+   */
   Dragon& operator=(const Dragon& dragon) = delete;
 
  private:

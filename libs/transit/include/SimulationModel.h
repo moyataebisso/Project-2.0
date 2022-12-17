@@ -7,26 +7,41 @@
 #include "graph.h"
 using namespace routing;
 
-//--------------------  Model ----------------------------
-
-/// Simulation Model handling the transit simulation.  The model can communicate
-/// with the controller.
+/**
+ * @brief this class is responsible for
+ * building the simulation model handling the transit simulation.
+ */
 class SimulationModel {
  public:
+  /**
+   * @brief Constructor for the Simulation Model
+   * @param[in] controller of IController& type
+   */
   SimulationModel(IController& controller);
-
+  /**
+   * @brief Sets the graph in simulation
+   * @param[in] graph of const IGraph* type
+   */
   void SetGraph(const IGraph* graph) { this->graph = graph; }
-
-  /// Creates an simulation entity
+  /**
+   * @brief Allows for the creation of simulation entities
+   * @param[in] entity of JsonObject& type
+   */
   void CreateEntity(JsonObject& entity);
-
-  /// Schedules a trip for an object in the scene
+  /**
+   * @brief Schedules a trip for an object in the scene
+   * @param[in] details of JsonObject& type
+   */
   void ScheduleTrip(JsonObject& details);
-
-  /// Updates the simulation
+  /**
+   * @brief Updates the simulation
+   * @param[in] dt of JsonObject& type
+   */
   void Update(double dt);
-
-  // Adds a new entity type
+  /**
+   * @brief Adds the factory for use in simulation
+   * @param[in] factory of IEntityFactory* type
+   */
   void AddFactory(IEntityFactory* factory);
 
  protected:

@@ -2,18 +2,30 @@
 #define ISTRATEGY_H_
 
 #include <vector>
-#include "graph.h"
+
 #include "IEntity.h"
+#include "graph.h"
 
 using namespace routing;
-
+/**
+ * @brief this class for generating the paths that the drone will take.
+ */
 class IStrategy {
-    public:
-        virtual void Move(IEntity* entity, double dt) = 0;
-        virtual bool IsCompleted() = 0;
-    protected:
-        // IGraph object to be used in the simulation.
-        const IGraph* graph;
-}; //close class 
+ public:
+  /**
+   * @brief Moves the entity based on IStrategy
+   * @param[in] entity of IEntity* type
+   * @param[in] dt of double type
+   */
+  virtual void Move(IEntity* entity, double dt) = 0;
+  /**
+   * @brief Checks to see if IStrategy is completed
+   */
+  virtual bool IsCompleted() = 0;
 
-#endif // ISTRATEGY_H_
+ protected:
+  // IGraph object to be used in the simulation.
+  const IGraph* graph;
+};  // close class
+
+#endif  // ISTRATEGY_H_

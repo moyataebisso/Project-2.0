@@ -7,7 +7,7 @@
 #include "IEntity.h"
 #include "IEntityFactory.h"
 /** @brief Dragon Factory inherits from IEntityFactory
- * to create the helicopter
+ * to create the dragon
  */
 class DragonFactory : public IEntityFactory {
  public:

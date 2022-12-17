@@ -16,8 +16,7 @@
 class Car : public IEntity {
  public:
   /**
-   * @brief Represents a Car in a physical system. Car moves
-   * using euler integration based on a specified velocity and direction.
+   * @brief Represents a Car in a physical system. 
    * @param[in] obj of JsonObject& type
    */
   Car(JsonObject& obj);
@@ -27,37 +26,38 @@ class Car : public IEntity {
   ~Car();
   /**
    * @brief Gets the speed of the Car
-   * @return float
+   * @return float of speed
    */
   float GetSpeed() const { return speed; }
   /**
    * @brief Gets the position of the Car
-   * @return Vector3
+   * @return Vector3 position
    */
   Vector3 GetPosition() const { return position; }
   /**
    * @brief Gets the direction of the Car
-   * @return Vector3
+   * @return Vector3 direction
    */
   Vector3 GetDirection() const { return direction; }
   /**
-   * @brief Gets the direction of the Car
-   * @return Vector3
+   * @brief Gets the destination of the Car
+   * @return Vector3 destination
    */
   Vector3 GetDestination() const { return destination; }
   /**
    * @brief Gets the details of the Car
-   * @return JsonObject
+   * @return JsonObject details
    */
   JsonObject GetDetails() const { return details; }
   /**
    * @brief Gets the availibility of the Car
-   * @return boolean
+   * @return boolean value of availability
    */
   bool GetAvailability() const { return available; }
   /**
    * @brief Updates the position of the Car
-   * @param[in] dt of double type and scheduler of std::vector<IEntity*> type
+   * @param[in] dt of double type
+   * @param[in] scheduler of std::vector<IEntity*> type
    */
   void Update(double dt, std::vector<IEntity*> scheduler);
   /**
@@ -80,9 +80,17 @@ class Car : public IEntity {
    * @param[in] angle of double type
    */
   void Rotate(double angle);
-  // Removing the copy constructor and assignment operator
-  // so that Cars cannot be coppied.
+  /**
+   * @brief Removing the copy constructor so that Basketball cannot be
+   * copied.
+   * @param[in] basketball of const Basketball& type
+   */
   Car(const Car& car) = delete;
+  /**
+   * @brief Removing the assignment operator so that Basketball cannot be
+   * copied.
+   * @param[in] basketball of const Basketball& type
+   */
   Car& operator=(const Car& car) = delete;
 
  private:

@@ -25,37 +25,38 @@ class Hoop : public IEntity {
   ~Hoop();
   /**
    * @brief Gets the speed of the Hoop
-   * @return float
+   * @return float of speed
    */
   float GetSpeed() const { return speed; }
   /**
    * @brief Gets the position of the Hoop
-   * @return Vector3
+   * @return Vector3 position
    */
   Vector3 GetPosition() const { return position; }
   /**
    * @brief Gets the direction of the Hoop
-   * @return Vector3
+   * @return Vector3 direction
    */
   Vector3 GetDirection() const { return direction; }
   /**
    * @brief Gets the destination of the Hoop
-   * @return Vector3
+   * @return Vector3 destination
    */
   Vector3 GetDestination() const { return destination; }
   /**
    * @brief Gets the details of the Hoop
-   * @return JsonObject
+   * @return JsonObject details
    */
   JsonObject GetDetails() const { return details; }
   /**
    * @brief Gets the availibility of the Hoop
-   * @return boolean
+   * @return boolean value of availability
    */
   bool GetAvailability() const { return available; }
   /**
    * @brief Updates the position of the Hoop
-   * @param[in] dt of double type and scheduler of std::vector<IEntity*> type
+   * @param[in] dt of double type
+   * @param[in] scheduler of std::vector<IEntity*> type
    */
   void Update(double dt, std::vector<IEntity*> scheduler);
   /**
@@ -78,9 +79,17 @@ class Hoop : public IEntity {
    * @param[in] angle of double type
    */
   void Rotate(double angle);
-  // Removing the copy constructor and assignment operator
-  // so that Hoop cannot be coppied.
+  /**
+   * @brief Removing the copy constructor so that Hoop cannot be
+   * copied.
+   * @param[in] hoop of const Hoop& type
+   */
   Hoop(const Hoop& hoop) = delete;
+  /**
+   * @brief Removing the assignment operator so that Hoop cannot be
+   * copied.
+   * @param[in] hoop of const Hoop& type
+   */
   Hoop& operator=(const Hoop& hoop) = delete;
 
  private:

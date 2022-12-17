@@ -6,51 +6,102 @@
 #include "IEntity.h"
 #include "IStrategy.h"
 #include "math/vector3.h"
-
-// Represents a drone in a physical system.
-// Drones move using euler integration based on a specified
-// velocity and direction.
+/** @brief Represents a drone in a physical system.
+ * Drones move using euler integration based on a specified velocity and
+ * direction.
+ */
 class Drone : public IEntity {
  public:
-  // Drones are created with a name
+  /**
+   * @brief Represents a Drone in a physical system.
+   * @param[in] obj of JsonObject& type
+   */
   Drone(JsonObject& obj);
-  // Destructor
+  /**
+   * @brief Destructor
+   */
   ~Drone();
-
+  /**
+   * @brief Gets the speed of the Drone
+   * @return float of speed
+   */
   float GetSpeed() const { return speed; }
-
-  // Gets the drone position
+  /**
+   * @brief Gets the position of the drone
+   * @return Vector3 position
+   */
   Vector3 GetPosition() const { return position; }
-
+  /**
+   * @brief Gets the direction of the drone
+   * @return Vector3 direction
+   */
   Vector3 GetDirection() const { return direction; }
-
+  /**
+   * @brief Gets the destination of the drone
+   * @return Vector3 destination
+   */
   Vector3 GetDestination() const { return destination; }
-
+  /**
+   * @brief Gets the details of the drone
+   * @return JsonObject details
+   */
   JsonObject GetDetails() const { return details; }
-
+  /**
+   * @brief Gets the availibility of the drone
+   * @return boolean value of availability
+   */
   bool GetAvailability() const { return available; }
-
+  /**
+   * @brief Gets the nearest entity to the drone
+   * @param[in] scheduler of std::vector<IEntity*> type
+   * @param[in] hoops of std::vector<IEntity*> type
+   */
   void GetNearestEntity(std::vector<IEntity*> scheduler,
                         std::vector<IEntity*> hoops);
-
-  // Updates the drone's position
-  void Update(double dt, std::vector<IEntity*> scheduler, std::vector<IEntity*> hoops);
-
+  /**
+   * @brief Updates the position of the Drone
+   * @param[in] dt of double type
+   * @param[in] scheduler of std::vector<IEntity*> type
+   * @param[in] hoops of std::vector<IEntity*> type
+   */
+  void Update(double dt, std::vector<IEntity*> scheduler,
+              std::vector<IEntity*> hoops);
+  /**
+   * @brief Sets the position of the Drone
+   * @param[in] pos_ of Vector3 type
+   */
   void SetPosition(Vector3 pos_) { position = pos_; }
-
-  // Sets the drone's direction
+  /**
+   * @brief Sets the direction of the Drone
+   * @param[in] dir_ of Vector3 type
+   */
   void SetDirection(Vector3 dir_) { direction = dir_; }
-
+  /**
+   * @brief Sets the destination of the Drone
+   * @param[in] des_ of Vector3 type
+   */
   void SetDestination(Vector3 des_) { destination = des_; }
-
-  // Rotates a drone
+  /**
+   * @brief Rotates the drone
+   * @param[in] angle of double type
+   */
   void Rotate(double angle);
-
+  /**
+   * @brief Makes the drone jump
+   * @param[in] height of double type
+   */
   void Jump(double height);
-
-  // Removing the copy constructor and assignment operator
-  // so that drones cannot be coppied.
+  /**
+   * @brief Removing the copy constructor so that Drone cannot be
+   * copied.
+   * @param[in] drone of const Drone& type
+   */
   Drone(const Drone& drone) = delete;
+  /**
+   * @brief Removing the assignment operator so that Drone cannot be
+   * copied.
+   * @param[in] drone of const Drone& type
+   */
   Drone& operator=(const Drone& drone) = delete;
 
  private:

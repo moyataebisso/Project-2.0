@@ -9,13 +9,13 @@
 #include "IStrategy.h"
 #include "math/vector3.h"
 /** @brief Represents a Basketball in a
- * physical system. Doesn't move.
+ * physical system.
  */
 class Basketball : public IEntity {
  public:
   /**
-   * @brief Represents a Basketball in a physical system. Basketball moves
-   * by getting picked up by a drone.
+   * @brief Represents a Basketball in a physical system. Constructor for
+   * Basketball object.
    * @param[in] obj of JsonObject& type
    */
   Basketball(JsonObject& obj);
@@ -25,37 +25,38 @@ class Basketball : public IEntity {
   ~Basketball();
   /**
    * @brief Gets the speed of the Basketball
-   * @return float
+   * @return float value of speed
    */
   float GetSpeed() const { return speed; }
   /**
    * @brief Gets the position of the Basketball
-   * @return Vector3
+   * @return Vector3 position
    */
   Vector3 GetPosition() const { return position; }
   /**
    * @brief Gets the direction of the Basketball
-   * @return Vector3
+   * @return Vector3 direction
    */
   Vector3 GetDirection() const { return direction; }
   /**
    * @brief Gets the destination of the Basketball
-   * @return Vector3
+   * @return Vector3 destination
    */
   Vector3 GetDestination() const { return destination; }
   /**
    * @brief Gets the details of the Basketball
-   * @return JsonObject
+   * @return JsonObject details
    */
   JsonObject GetDetails() const { return details; }
   /**
    * @brief Gets the availibility of the Basketball
-   * @return boolean
+   * @return boolean value of availability
    */
   bool GetAvailability() const { return available; }
   /**
    * @brief Updates the position of the Basketball
-   * @param[in] dt of double type and scheduler of std::vector<IEntity*> type
+   * @param[in] dt of double type
+   * @param[in] scheduler of std::vector<IEntity*> type
    */
   void Update(double dt, std::vector<IEntity*> scheduler);
   /**
@@ -75,14 +76,14 @@ class Basketball : public IEntity {
   void SetDestination(Vector3 des_) { destination = des_; }
   /**
    * @brief Sets the strategy name of basketball
-   * @param[in] strategy type
+   * @param[in] strategyName_ of std::string type
    */
   void SetStrategyName(std::string strategyName_) {
     strategyName = strategyName_;
   }
   /**
    * @brief Sets the availability of basketball
-   * @param[in] bool choice of availability
+   * @param[in] choice of bool type
    */
   void SetAvailability(bool choice);
   /**
@@ -90,9 +91,16 @@ class Basketball : public IEntity {
    * @param[in] angle of double type
    */
   void Rotate(double angle);
-  // Removing the copy constructor and assignment operator
-  // so that Basketball cannot be coppied.
+  /**
+   * @brief Removing the copy constructor so that Basketball cannot be copied.
+   * @param[in] basketball of const Basketball& type
+   */
   Basketball(const Basketball& basketball) = delete;
+  /**
+   * @brief Removing the assignment operator so that Basketball cannot be
+   * copied.
+   * @param[in] basketball of const Basketball& type
+   */
   Basketball& operator=(const Basketball& basketball) = delete;
 
  private:

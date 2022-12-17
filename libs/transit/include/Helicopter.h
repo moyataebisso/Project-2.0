@@ -16,8 +16,7 @@
 class Helicopter : public IEntity {
  public:
   /**
-   * @brief Represents a Helicopter in a physical system. Helicopter moves
-   * using euler integration based on a specified velocity and direction.
+   * @brief Represents a Helicopter in a physical system.
    * @param[in] obj of JsonObject& type
    */
   Helicopter(JsonObject& obj);
@@ -27,37 +26,38 @@ class Helicopter : public IEntity {
   ~Helicopter();
   /**
    * @brief Gets the speed of the Helicopter
-   * @return float
+   * @return float of speed
    */
   float GetSpeed() const { return speed; }
   /**
    * @brief Gets the position of the Helicopter
-   * @return Vector3
+   * @return Vector3 position
    */
   Vector3 GetPosition() const { return position; }
   /**
    * @brief Gets the direction of the Helicopter
-   * @return Vector3
+   * @return Vector3 direction
    */
   Vector3 GetDirection() const { return direction; }
   /**
    * @brief Gets the destination of the Helicopter
-   * @return Vector3
+   * @return Vector3 destination
    */
   Vector3 GetDestination() const { return destination; }
   /**
    * @brief Gets the details of the Helicopter
-   * @return JsonObject
+   * @return JsonObject details
    */
   JsonObject GetDetails() const { return details; }
   /**
    * @brief Gets the availibility of the Helicopter
-   * @return boolean
+   * @return boolean value of availability
    */
   bool GetAvailability() const { return available; }
   /**
    * @brief Updates the position of the Helicopter
-   * @param[in] dt of double type and scheduler of std::vector<IEntity*> type
+   * @param[in] dt of double type
+   * @param[in] scheduler of std::vector<IEntity*> type
    */
   void Update(double dt, std::vector<IEntity*> scheduler);
   /**
@@ -80,9 +80,17 @@ class Helicopter : public IEntity {
    * @param[in] angle of double type
    */
   void Rotate(double angle);
-  // Removing the copy constructor and assignment operator
-  // so that helicopters cannot be coppied.
+  /**
+   * @brief Removing the copy constructor so that Helicopter cannot be
+   * copied.
+   * @param[in] helicopter of const Helicopter& type
+   */
   Helicopter(const Helicopter& helicopter) = delete;
+  /**
+   * @brief Removing the assignment operator so that Helicopter cannot be
+   * copied.
+   * @param[in] helicopter of const Helicopter& type
+   */
   Helicopter& operator=(const Helicopter& helicopter) = delete;
 
  private:

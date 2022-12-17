@@ -6,7 +6,7 @@
 #include "Basketball.h"
 #include "IEntity.h"
 #include "IEntityFactory.h"
-/** @brief Basketball Factory inherits from IEntityFactory
+/** @brief Basketball Factory inherits from IEntityFactory 
  * to create the Basketball
  */
 class BasketballFactory : public IEntityFactory {
