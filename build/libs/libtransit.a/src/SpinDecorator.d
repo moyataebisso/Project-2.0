@@ -1,12 +1,11 @@
 ../../build/libs/libtransit.a/src/SpinDecorator.o: src/SpinDecorator.cc \
  include/SpinDecorator.h include/CelebrationDecorator.h \
- include/IStrategy.h ../../libs/routing/include/graph.h \
+ include/IStrategy.h include/IEntity.h ../../libs/routing/include/graph.h \
  ../../libs/routing/include/routing_strategy.h \
  ../../libs/routing/include/graph.h \
  ../../libs/routing/include/distance_function.h \
- ../../libs/routing/include/bounding_box.h include/IEntity.h \
- include/math/vector3.h include/util/json.h \
- ../../dependencies/include/WebServer.h \
+ ../../libs/routing/include/bounding_box.h include/math/vector3.h \
+ include/util/json.h ../../dependencies/include/WebServer.h \
  ../../dependencies/include/libwebsockets.h \
  ../../dependencies/include/lws_config.h \
  ../../dependencies/include/libwebsockets/lws-logs.h \
@@ -95,6 +94,8 @@ include/CelebrationDecorator.h:
 
 include/IStrategy.h:
 
+include/IEntity.h:
+
 ../../libs/routing/include/graph.h:
 
 ../../libs/routing/include/routing_strategy.h:
@@ -104,8 +105,6 @@ include/IStrategy.h:
 ../../libs/routing/include/distance_function.h:
 
 ../../libs/routing/include/bounding_box.h:
-
-include/IEntity.h:
 
 include/math/vector3.h:
 

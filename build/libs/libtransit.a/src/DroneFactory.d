@@ -1,5 +1,5 @@
 ../../build/libs/libtransit.a/src/DroneFactory.o: src/DroneFactory.cc \
- include/DroneFactory.h include/IEntity.h \
+ include/DroneFactory.h include/Drone.h include/IEntity.h \
  ../../libs/routing/include/graph.h \
  ../../libs/routing/include/routing_strategy.h \
  ../../libs/routing/include/graph.h \
@@ -86,10 +86,12 @@
  ../../dependencies/include/libwebsockets/lws-settings.h \
  ../../dependencies/include/libwebsockets/lws-netdev.h \
  ../../dependencies/include/picojson.h \
- ../../dependencies/include/picojson.h include/IEntityFactory.h \
- include/Drone.h include/IStrategy.h
+ ../../dependencies/include/picojson.h include/IStrategy.h \
+ include/IEntityFactory.h
 
 include/DroneFactory.h:
+
+include/Drone.h:
 
 include/IEntity.h:
 
@@ -271,8 +273,6 @@ include/util/json.h:
 
 ../../dependencies/include/picojson.h:
 
-include/IEntityFactory.h:
-
-include/Drone.h:
-
 include/IStrategy.h:
+
+include/IEntityFactory.h:
