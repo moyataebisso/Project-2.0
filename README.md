@@ -14,7 +14,7 @@ What is the project about: This project allows the user to control the behavior 
 
 2) Go to the project directory
 
-  cd /path/to/repo/project
+    cd /path/to/repo/project
 
 3) Build the project:
 
