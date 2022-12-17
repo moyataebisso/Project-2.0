@@ -36,3 +36,6 @@ New Feature: When a drone picks up a basketball, it drops it off at the nearest 
 Sprint Retrospective: Our team used 3 Sprints during the course of creating this final project. The first sprint included basic plans like getting our idea checked off by a teacher assistant and scheduling a weekly time to meet up and discuss our progress and plans. The second sprint was about starting the coding aspect of the project by creating the header files first, and then creating the .cc files next. Then our last sprint had information about how we split up the work for Doxygen and code styling, and also finalizing our code.
 
 Note: For the code styling of SimulationModel.cc and SimulationModel.h, when we fix the rand() function to be rand_r() like we did in Basketball.cc and Hoop.cc, the simulation doesn't run at all so that's why we left the rand_r() functions in those files.
+
+
+
