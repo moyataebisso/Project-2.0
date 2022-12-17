@@ -14,17 +14,17 @@ What is the project about: This project allows the user to control the behavior 
 
 2) Go to the project directory
 
-    cd /path/to/repo/project
+    **cd /path/to/repo/project**
 
 3) Build the project:
 
-   make clean
+   **make clean**
  
  
-   make -j
+   **make -j**
 
 4) Run the project:
-**./build/bin/transit_service 8081 apps/transit_service/web/**
+   **./build/bin/transit_service 8081 apps/transit_service/web/**
 
 5) Navigate to http://127.0.0.1:8081 and you should see a visualization. (Must open links in order for robots to appear)
 
