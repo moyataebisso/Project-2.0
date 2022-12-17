@@ -15,10 +15,14 @@
 #include "JumpDecorator.h"
 #include "SpinDecorator.h"
 
+unsigned int seed = time(0);
+
 Basketball::Basketball(JsonObject& obj) : details(obj) {
-  int var1 = rand() % 2900 - 1400;
-  int var2 = rand() % 700 + 250;
-  double var3 = rand() % 1600 - 800;
+  int var1 = rand_r(&seed) % 2900 - 1400;
+  int var2 = rand_r(&seed) % 700 + 250;
+  double var3 =
+      rand_r(&seed) % 1600 -
+      800;  // variables for setting basketball entities at random locations
 
   position = {var1, var2, var3};
 
@@ -48,6 +52,7 @@ void Basketball::Update(double dt, std::vector<IEntity*> scheduler) {
     toTargetPosStrategy = new BeelineStrategy(GetPosition(), GetDestination());
   }
 }
+
 void Basketball::SetAvailability(bool choice) { available = choice; }
 
 void Basketball::Rotate(double angle) {

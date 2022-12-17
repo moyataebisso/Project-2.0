@@ -57,22 +57,22 @@ void Drone::GetNearestEntity(std::vector<IEntity*> scheduler,
         }
       }
     }
-    
-    if (nearestEntity) {
-    nearestEntity->SetStrategyName("beeline");
+    if (nearestEntity) {  // setting basketball to beeline strategy
+      nearestEntity->SetStrategyName("beeline");
     }
   }
 
   if (nearestEntity) {
     nearestEntity->SetAvailability(
         false);  // set availability to the nearest entity
-    std::cout << nearestEntity->GetAvailability() << std::endl;
     available = false;
     pickedUp = false;
 
     destination = nearestEntity->GetPosition();
     toTargetPosStrategy = new BeelineStrategy(this->GetPosition(), destination);
-    std::string targetStrategyName = nearestEntity->GetStrategyName();
+    std::string targetStrategyName =
+        nearestEntity->GetStrategyName();  // sets celebration for drone based
+                                           // on strategy given
     if (targetStrategyName.compare("astar") == 0) {
       toTargetDestStrategy = new AstarStrategy(
           nearestEntity->GetPosition(), nearestEntity->GetDestination(), graph);
@@ -113,7 +113,10 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler,
     // Moving the robot
     nearestEntity->SetPosition(this->GetPosition());
     nearestEntity->SetDirection(this->GetDirection());
-    if (toTargetDestStrategy->IsCompleted()) {
+    if (toTargetDestStrategy
+            ->IsCompleted()) {  // when drone finishes trip, drone resets its
+                                // strategies and remains still until new trip
+                                // is scheduled.
       delete toTargetDestStrategy;
       toTargetDestStrategy = NULL;
       available = true;
@@ -122,13 +125,13 @@ void Drone::Update(double dt, std::vector<IEntity*> scheduler,
   }
 }
 
-void Drone::Rotate(double angle) {
+void Drone::Rotate(double angle) {  // function to rotate drone
   Vector3 dirTmp = direction;
   direction.x = dirTmp.x * std::cos(angle) - dirTmp.z * std::sin(angle);
   direction.z = dirTmp.x * std::sin(angle) + dirTmp.z * std::cos(angle);
 }
 
-void Drone::Jump(double height) {
+void Drone::Jump(double height) {  // function to make drone jump
   if (goUp) {
     position.y += height;
     jumpHeight += height;
